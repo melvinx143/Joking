@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #sectiona
+    {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #content
+    {
+        border:1px solid black;
+        background-color: bisque;
+        padding:10px;
+        width:500px;
+        height:500px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 12px 12px 12px white;
+    }
+    #btn
+    {
+        width:100px;
+        padding:10px;
+        border-radius: 22px;
+        border:none;
+        font-size: 16px;
+        box-shadow: 12px 12px 12px grey;
+        cursor:pointer;
+    }
+    #btn:active{
+        color:white;
+        background-color: black;
+    }
+    body{
+        background-color: black;
+    }
+    #texting
+    {
+        font-size: 18px;
+        font-weight: bold;
+        color:green;
+    }
+</style>
+<body>
+    <div id="sectiona">
+        <h1 style="color:grey">JOKES</h1>
+        <div id="content">
+            
+            <h3 id="jokes">What is coldest alphabet</h3>
+            <h3 id="joking">'B' as it lies between A and C </h3>
+            <p id="texting">Want More?Click Here!!!</p>
+            <button id="btn">Next</button>
+        </div>
+       
+    </div>
+    <script>
+        let btn=document.getElementById("btn");
+ let jokes=document.getElementById("jokes");
+ let joking=document.getElementById("joking");
+        let url='https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
+async function gen()
+{
+    const response=await fetch(url);
+    const data=await response.json();
+    console.log(data.setup);
+    console.log(data.delivery);
+    jokes.textContent=data.setup;
+joking.textContent=data.delivery;
+    
+}
+btn.addEventListener('click',gen);
+
+
+    </script>
+</body>
+</html>
